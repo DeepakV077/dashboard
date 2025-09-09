@@ -875,24 +875,24 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Check auth state (protect dashboard)
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        document.querySelector(".user-info").textContent = user.email;
-      } else {
-        // Not logged in → redirect to login
-        window.location.href = "login.html";
-      }
-    });
+        // Check auth state (protect dashboard)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.querySelector(".user-info").textContent = user.email;
+            } else {
+                // Not logged in → redirect to login
+                window.location.href = "./login.html";
+            }
+        });
 
-    // Logout button
-    document.querySelector(".footer-btn.primary").addEventListener("click", () => {
-      signOut(auth).then(() => {
-        window.location.href = "login.html";
-      }).catch((error) => {
-        alert("Error logging out: " + error.message);
-      });
-    });
+        // Logout button
+        document.querySelector(".footer-btn.primary").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                window.location.href = "./login.html";
+            }).catch((error) => {
+                alert("Error logging out: " + error.message);
+            });
+        });
 
     // Date/Time updater
     function updateDateTime() {
